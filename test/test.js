@@ -1,9 +1,9 @@
 var rc = require('../');
 
-var n = 'rc'+Math.random()
+var n = 'rc' + Math.random()
 var assert = require('assert')
 
-process.env[n+'_envOption'] = 42
+process.env[n + '_envOption'] = 42
 
 var config = rc(n, {
   option: true
@@ -17,14 +17,14 @@ assert.equal(config.envOption, 42)
 var customArgv = rc(n, {
   option: true
 }, { // nopt-like argv
-  option: false,
-  envOption: 24,
-  argv: {
-    remain: [],
-    cooked: ['--no-option', '--envOption', '24'],
-    original: ['--no-option', '--envOption=24']
-  }
-})
+    option: false,
+    envOption: 24,
+    argv: {
+      remain: [],
+      cooked: ['--no-option', '--envOption', '24'],
+      original: ['--no-option', '--envOption=24']
+    }
+  })
 
 console.log(customArgv)
 
@@ -37,10 +37,10 @@ var jsonrc = path.resolve('.' + n + 'rc');
 
 fs.writeFileSync(jsonrc, [
   '{',
-    '// json overrides default',
-    '"option": false,',
-    '/* env overrides json */',
-    '"envOption": 24',
+  '// json overrides default',
+  '"option": false,',
+  '/* env overrides json */',
+  '"envOption": 24',
   '}'
 ].join('\n'));
 
@@ -63,22 +63,22 @@ assert.equal(commentedJSON.configs[0], jsonrc)
 errorWorthyTypes = ['asdf', 1, [], function() { }]
 
 for (var i = 0; i < errorWorthyTypes.length; i++) {
-    var errorThrown = false;
-    try {
-        rc(n, errorWorthyTypes[i]);
-    }
-    catch (err) {
-        errorThrown = true;
-    }
+  var errorThrown = false;
+  try {
+    rc(n, errorWorthyTypes[i]);
+  }
+  catch (err) {
+    errorThrown = true;
+  }
 
-    assert(errorThrown, true)
+  assert(errorThrown, true)
 }
 
 // check if error is thrown for missing file passed through --config
 process.argv.push('--config', '.filedoesnotexistrc')
 
 assert.throws(
-    function() {
-        rc(n);
-    }
+  function() {
+    rc(n);
+  }
 );
