@@ -1,5 +1,7 @@
 # rc
 
+[![Code Climate](https://codeclimate.com/github/leschekfm/rc/badges/gpa.svg)](https://codeclimate.com/github/leschekfm/rc)
+
 The non-configurable configuration loader for lazy people.
 
 ## Usage
