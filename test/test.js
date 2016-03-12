@@ -74,3 +74,11 @@ for (var i = 0; i < errorWorthyTypes.length; i++) {
     assert(errorThrown, true)
 }
 
+// check if error is thrown for missing file passed through --config
+process.argv.push('--config', '.filedoesnotexistrc')
+
+assert.throws(
+    function() {
+        rc(n);
+    }
+);
