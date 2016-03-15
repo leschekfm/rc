@@ -1,5 +1,7 @@
 # rc
 
+[ ![Codeship Status for leschekfm/rc](https://codeship.com/projects/d362fed0-cd1c-0133-d76f-0a7140f73a08/status?branch=master)](https://codeship.com/projects/140466)
+
 The non-configurable configuration loader for lazy people.
 
 ## Usage
@@ -141,7 +143,7 @@ such as strict, valid JSON only.
 
 ## Note on Performance
 
-`rc` is running `fs.statSync`-- so make sure you don't use it in a hot code path (e.g. a request handler) 
+`rc` is running `fs.statSync`-- so make sure you don't use it in a hot code path (e.g. a request handler)
 
 
 ## License
